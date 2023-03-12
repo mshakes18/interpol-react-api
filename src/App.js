@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Axios from "axios";
+import React, { useState } from "react";
 
 function App() {
+  const [wantedNames, setWantedNames] = useState([]);
+  const getWantedNames = () => {
+    Axios.get(
+      "https://ws-public.interpol.int/notices/v1/red?nationality=DE",
+    ).then((response) => {
+      setWantedNames(response.data._embedded.notices);
+    });
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello world</h1>
     </div>
   );
 }
