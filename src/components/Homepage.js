@@ -8,12 +8,13 @@ function Homepage() {
     Axios.get(
       "https://ws-public.interpol.int/notices/v1/red?nationality=DE",
     ).then((response) => {
-      // console.log(response.data._embedded.notices);
       setWantedNames([...response.data._embedded.notices]);
     });
   }, []);
 
   const wantedDetails = wantedNames.map((person) => {
+    const updatedEID = person.entity_id;
+    console.log(updatedEID);
     return (
       <div>
         <h3>
