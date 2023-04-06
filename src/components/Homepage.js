@@ -13,12 +13,11 @@ function Homepage() {
   }, []);
 
   const wantedDetails = wantedNames.map((person) => {
-    const updatedEID = person.entity_id;
-    console.log(updatedEID);
+    const updatedEID = person.entity_id.split("/").join("-");
     return (
       <div>
         <h3>
-          <Link to={`/users/${person.entity_id}`}>
+          <Link to={`/users/${updatedEID}`}>
             {person.forename + " " + person.name}
           </Link>
         </h3>
